@@ -27,7 +27,7 @@ const SubjectTable = ({ title, subjects }) => {
 
 
     return (
-        <div className="bg-blue-300 p-4 rounded shadow">
+        <div className="bg-blue-200 p-4 rounded shadow">
             <h2 className="text-xl font-semibold mb-3">{title}</h2>
             <table className="w-full text-left border-collapse">
                 <thead className="text-sm text-gray-600 border-b">

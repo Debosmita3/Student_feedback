@@ -24,7 +24,7 @@ const StudentDashboard = () => {
   }, [selectedSem]);
 
   return (
-    <div className="flex min-h-screen bg-blue-200">
+    <div className="flex min-h-screen bg-white-300">
       <Sidebar />
       <div className="flex-1">
         <Header userRole="student" />
