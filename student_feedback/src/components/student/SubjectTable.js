@@ -19,7 +19,8 @@ const SubjectTable = ({ title, subjects }) => {
                 courseName: subj.course_name,
                 facultyName: subj.faculty_name,
                 facultyId: subj.faculty_id,
-                semester:subj.semester
+                semester:subj.semester,
+                type:subj.course_type
             },
         });
     };

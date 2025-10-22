@@ -41,7 +41,6 @@ const StudentDashboard = () => {
                 </option>
               ))}
             </select>
-            <button className=" bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded">Previous</button>
           </div>
 
           <div className="space-y-6">

@@ -1,5 +1,5 @@
 // pages/student/FeedbackForm.jsx
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext";
@@ -37,11 +37,15 @@ const FeedbackForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useContext(AuthContext);
-  const { courseId, courseName, facultyName, facultyId, semester } = location.state || {}; // Data passed via navigation
+  const { courseId, courseName, facultyName, facultyId, semester, type } = location.state || {}; // Data passed via navigation
 
-  const [formType, setFormType] = useState("theory");
+  const [formType, setFormType] = useState(type||"");
   const [responses, setResponses] = useState({});
   const [comments, setComments] = useState("");
+
+  useEffect(() => {
+    if (type) setFormType(type);
+  }, [type]);
 
   const questions =
     formType === "theory"
@@ -94,6 +98,10 @@ const FeedbackForm = () => {
     }
   };
 
+  if (!type) {
+    return <p className="text-center text-red-500 mt-10">Invalid feedback type</p>;
+  }
+
   return (
     <div className="p-6  w-full flex flex-col items-center mx-auto bg-blue-200">
       <h1 className="text-2xl font-semibold leading-snug tracking-wider mb-4 border-b-4 w-full border-yellow-200 shadow-md shadow-black/20 text-center pb-4">
@@ -109,12 +117,14 @@ const FeedbackForm = () => {
           onChange={(e) => setFormType(e.target.value)}
           className="w-full max-w-md bg-white/10 text-black border border-purple-300 rounded-md px-4 py-2 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition duration-200"
         >
-          <option value="theory" className="bg-purple-900 text-white">
-            Theory Subject + Teacher
-          </option>
-          <option value="practical" className="bg-purple-900 text-white">
-            Practical Subject + Teacher
-          </option>
+          {type==="theory"?
+            <option value="theory" className="bg-purple-900 text-white">
+              Theory Subject + Teacher
+            </option>:
+            <option value="practical" className="bg-purple-900 text-white">
+              Practical Subject + Teacher
+            </option>
+          }
           <option value="course" className="bg-purple-900 text-white">
             Course Only
           </option>
