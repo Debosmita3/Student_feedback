@@ -90,7 +90,7 @@ const FeedbackForm = () => {
         toast.success(data.message);
         navigate(`/${user.role}/dashboard`);
       } else {
-        toast.error("Error: " + data.message);
+        toast.error("Error: Duplicate entry");
       }
     } catch (err) {
       toast.error("Server error! "+err);

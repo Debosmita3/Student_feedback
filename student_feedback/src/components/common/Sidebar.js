@@ -27,10 +27,6 @@ const Sidebar = () => {
                         <MdDashboard />
                         <div>Dashboard</div>
                     </div>
-                    <div className="flex gap-2 items-center text-lg font-semibold hover:cursor-pointer border-b pb-2 " onClick={() => navigate(`/${user.role}/settings`)}>
-                        <CiSettings />
-                        <div> Settings</div>
-                    </div>
                     <div onClick={handleSignOut}
                     className="flex gap-2 items-center text-lg font-semibold hover:cursor-pointer border-b pb-2 ">
                         <PiSignOutThin />
